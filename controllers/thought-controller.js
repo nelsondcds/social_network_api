@@ -1,6 +1,6 @@
-const { Comment, Pizza } = require('../models');
+const { Thought, User } = require('../models');
 
-const commentController = {
+const thoughtController = {
   // add comment to pizza
   addComment({ params, body }, res) {
     console.log(body);
@@ -72,4 +72,4 @@ const commentController = {
   }
 };
 
-module.exports = commentController;
+module.exports = thoughtController;
