@@ -79,12 +79,8 @@ const userController = {
             }
             return Thought.deleteMany({ username: dbUserData.username });
         })
-        .then(deletedThoughts => {
-            if (deletedThoughts == 0) {
-              res.json({ message: 'User deleted! They had no thoughts, they will not be missed.' });
-            } else {
-              res.json({ message: 'User and associated thoughts deleted!' });
-            }
+        .then(() => {
+            res.json({ message: 'User and associated thoughts deleted!' });
         })
         .catch(err => res.status(400).json(err));
     },
