@@ -5,19 +5,22 @@ const {
     createPizza,
     updatePizza,
     deletePizza
-} = require('../../controllers/pizza-controller');
+} = require('../../controllers/user-controller');
 
-// Set up GET all and POST at /api/pizzas
 router
   .route('/')
   .get(getAllPizza)
   .post(createPizza);
 
-// Set up GET one, PUT, and DELETE at /api/pizzas/:id
 router
-  .route('/:id')
+  .route('/:userId')
   .get(getPizzaById)
   .put(updatePizza)
+  .delete(deletePizza);
+
+router
+  .route('/:userId/friends/:friendId')
+  .post(updatePizza)
   .delete(deletePizza);
 
 module.exports = router;

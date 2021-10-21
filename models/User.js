@@ -12,7 +12,7 @@ const UserSchema = new Schema({
       type: String,
       required: true,
       unique: true,
-      match: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+      match: /^([A-Za-z0-9_\.-]+)@([\da-zA-Z\.-]+)\.([a-z\.]{2,6})$/
     },
     thoughts: [
       {
@@ -20,12 +20,16 @@ const UserSchema = new Schema({
         ref: 'Thought'
       }
     ],
-    friends: [UserSchema]
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+      }
+    ]
   },
   {
     toJSON: {
-      virtuals: true,
-      getters: true
+      virtuals: true
     },
     id: false
   }
